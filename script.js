@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Path ke gambar personamu
     const developerImage = 'assets/images/formal.png'; // Ganti dengan path foto formal.jpg
-    const designerImage = 'assets/images/hima.png'; // Ganti dengan path foto himaaa.jpg
+    const designerImage = 'assets/images/graphic.png'; // Ganti dengan path foto himaaa.jpg
 
     // Set state awal (Developer)
     let isDeveloper = true;
