@@ -78,19 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
             role: "Full Stack Developer", // Role Pill text
             category: "Web Development",
             description: "A comprehensive expense tracking platform built for startups to manage tight budgets. Features real-time dashboards, multi-user roles, and automated reporting capabilities. I was responsible for the entire backend architecture and frontend integration.",
-            imageFull: "assets/works/work1-full.jpg", 
-            certificate: "assets/sertificates/sertknu.jpeg", // Path sertifikat kamu
-            githubLink: "https://github.com/username/finflow-repo"
+            imageFull: "assets/works/winner.png", 
+            certificate: "assets/sertificates/sertif.png", // Path sertifikat kamu
+            githubLink: "https://github.com/ardiano27/Monitoring-TrashScan"
         },
         {
             id: 2,
             title: "Konekin Website",
-            role: "UI/UX Engineer",
+            role: "Full Stack Developer", // Role Pill text
             category: "Frontend Tooling",
             description: "An intuitive drag-and-drop website builder designed for non-technical founders. My focus was on creating high-converting landing page components and ensuring accessibility compliance (WCAG 2.1).",
-            imageFull: "assets/works/work2-full.jpg",
+            imageFull: "assets/works/konekin2.png",
             certificate: null, // Kalau tidak ada sertifikat, set null
-            githubLink: "https://github.com/username/launchpad-repo"
+            githubLink: "https://github.com/ardiano27/Website-Konekin"
         }
     ];
 

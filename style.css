@@ -296,8 +296,8 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 
 .visual-floater.v1 { top: 10%; left: 10%; width: 300px; animation-delay: 0s; z-index: 2;}
-.visual-floater.v2 { top: 40%; right: 15%; width: 250px; animation-delay: 3s; z-index: 1;}
-.visual-floater.v3 { bottom: 10%; left: 30%; width: 280px; animation-delay: 5s; z-index: 3;}
+.visual-floater.v2 { top: 40%; right: 10%; width: 250px; animation-delay: 3s; z-index: 1;}
+.visual-floater.v3 { bottom: 10%; left: 40%; width: 280px; animation-delay: 5s; z-index: 3;}
 
 @keyframes floatVisuals {
     0% { transform: translateY(0px) scale(1); }
