@@ -525,3 +525,157 @@ input:checked + .slider:before { transform: translateX(26px); }
     .social-links { gap: 15px; }
     .social-item i { font-size: 1.8rem; }
 }
+
+/* --- Tambahan Bumbu Visual (Spice) --- */
+
+/* 1. Dynamic Text Transition */
+.dynamic-text-container p {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dynamic-text-container.fade-out p {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* 2. Live Time & Location Widget */
+.live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71; /* Green active color */
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+/* 3. Refined Modal (TalentBridge Style) */
+/* Update style modal-content agar lebih lebar */
+.modal-content {
+    max-width: 1000px; /* Lebih lebar untuk accommodate sertifikat */
+    text-align: center; /* Center alignment seperti referensi */
+}
+
+.modal-project-details h2 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem; /* Judul Besar */
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.modal-description-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.role-pill {
+    display: inline-block;
+    background-color: var(--text-primary);
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    font-family: var(--font-sans);
+}
+
+/* Layout Grid untuk Modal: Gambar Project & Sertifikat */
+.project-gallery {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Kiri gambar project, Kanan sertifikat */
+    gap: 20px;
+    align-items: start;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.main-project-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.certificate-wrapper {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px dashed #ccc;
+}
+
+.certificate-wrapper h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.certificate-img {
+    width: 100%;
+    border-radius: 8px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    cursor: zoom-in;
+}
+
+.certificate-img:hover {
+    transform: scale(1.02);
+}
+
+/* Update Social Links di Footer agar lebih rapi */
+.social-links {
+    flex-wrap: wrap;
+}
+.social-item {
+    flex-direction: row; /* Icon sebelah kiri text */
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.social-item:hover {
+    background: var(--text-primary);
+    transform: translateY(-5px);
+}
+.social-item:hover span, .social-item:hover i {
+    color: #fff !important; /* Force white on hover */
+}
+.icon-box {
+    font-size: 1.2rem;
+}
+
+/* Responsif untuk Modal */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    .modal-project-details h2 {
+        font-size: 2.5rem;
+    }
+}

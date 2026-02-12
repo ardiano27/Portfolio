@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio Profile</title>
+    <title>Revi Ardiano - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logo/logo.png">
 </head>
 <body>
 
@@ -22,18 +23,21 @@
 
     <section id="hero" class="hero-section">
         <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Arlecchino</span></h1>
-            <p class="subtitle">The intersection of logic and aesthetics.</p>
-            
-            <div class="persona-toggle-container">
-                <span class="toggle-label">Developer</span>
-                <label class="switch">
-                    <input type="checkbox" id="personaToggle">
-                    <span class="slider round"></span>
-                </label>
-                <span class="toggle-label">Designer</span>
-            </div>
-        </div>
+    <h1>Hi! My Name <span class="highlight">Revi Ardiano</span></h1>
+    
+    <div id="dynamicDescription" class="dynamic-text-container">
+        <p class="subtitle">I'm Full Stack Developer, crafting robust digital solutions with clean code and logical thinking.</p>
+    </div>
+    
+    <div class="persona-toggle-container">
+        <span class="toggle-label">Developer</span>
+        <label class="switch">
+            <input type="checkbox" id="personaToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Designer</span>
+    </div>
+</div>
 
         <div class="hero-image-container" id="heroImageContainer">
             <div class="blur-bg"></div>
@@ -84,15 +88,15 @@
                     <img src="assets/works/knu.jpeg" alt="Project 1 Thumbnail">
                 </div>
                 <div class="work-info">
-                    <h3>FinFlow System</h3>
-                    <p>Expense tracking platform for startups.</p>
+                    <h3>Smart Trash-Bean </h3>
+                    <p>Website for monitoring the trash bin based on IoT sensors.</p>
                     <span class="tag">Full Stack Development</span>
                 </div>
             </div>
 
             <div class="work-card" data-id="2">
                 <div class="work-thumbnail">
-                    <img src="assets/works/work2-thumb.jpg" alt="Project 2 Thumbnail">
+                    <img src="assets/works/konekin.png" alt="Project 2 Thumbnail">
                 </div>
                 <div class="work-info">
                     <h3>LaunchPad Builder</h3>
@@ -112,26 +116,31 @@
         </div>
     </div>
 
-
     <footer id="contact">
         <div class="footer-content text-center">
             <h2>Let's Create Together</h2>
+
+<div class="live-status">
+            <span class="status-dot"></span>
+            <span id="liveTime">00:00</span> — <span class="highlight">Indonesia</span>
+        </div>
+
             <p>Feel free to reach out for collaborations or just a friendly hello.</p>
             
             <div class="social-links">
-                <a href="mailto:reviardiano109@gmail.com" class="social-item" aria-label="Email">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Email Me</span>
-                </a>
-                <a href="https://github.com/ardiano27" target="_blank" class="social-item" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://instagram.com/revrdhn_" target="_blank" class="social-item" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-            </div>
+            <a href="mailto:reviardiano109@gmail.com" class="social-item">
+                <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <span>reviardiano109@gmail.com</span>
+            </a>
+            <a href="https://github.com/ardiano27" target="_blank" class="social-item">
+                <div class="icon-box"><i class="fa-brands fa-github"></i></div>
+                <span>@ardiano27</span>
+            </a>
+            <a href="https://instagram.com/revrdhn_" target="_blank" class="social-item">
+                <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <span>@revrdhn_</span>
+            </a>
+        </div>
         </div>
         <div class="copyright">
             © 2026 Ardiano. Made with code & creativity.
