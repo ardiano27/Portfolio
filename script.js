@@ -57,16 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // --- 2. Time & Location Logic ---
+    // --- 2. Time & Location Logic (UPDATED: AM/PM) ---
     function updateTime() {
         const timeDisplay = document.getElementById('liveTime');
         const now = new Date();
-        // Format waktu: Jam:Menit (ex: 14:05)
-        const timeString = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+        
+        // Format waktu: Jam:Menit AM/PM
+        // Menggunakan 'en-US' agar format defaultnya 12-hour (AM/PM)
+        const timeString = now.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: true 
+        });
+        
         timeDisplay.textContent = timeString;
     }
-    setInterval(updateTime, 1000); // Update tiap detik
-    updateTime(); // Run immediately
+    setInterval(updateTime, 1000); 
+    updateTime();
 
     // --- 3. Works Section Data & New Modal Layout ---
     
@@ -152,4 +159,32 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (e) => {
         if (e.target == modal) closeProjectModal();
     });
+// --- 4. Sneak Peek Image Viewer Logic ---
+    const viewerModal = document.getElementById('imageViewer');
+    const viewerImg = document.getElementById("img01");
+    const peekImages = document.querySelectorAll('.peek-img');
+    const closeViewer = document.querySelector('.close-viewer');
+
+    // Tambahkan event click ke setiap gambar di marquee
+    peekImages.forEach(img => {
+        img.addEventListener('click', function() {
+            viewerModal.style.display = "flex"; // Gunakan flex biar center vertikal
+            viewerModal.style.alignItems = "center";
+            viewerModal.style.justifyContent = "center";
+            viewerImg.src = this.src; // Ambil source gambar yang diklik
+        });
+    });
+
+    // Tutup Viewer
+    closeViewer.onclick = function() { 
+        viewerModal.style.display = "none"; 
+    }
+
+    // Tutup jika klik area kosong (overlay)
+    viewerModal.onclick = function(e) {
+        if(e.target === viewerModal) {
+            viewerModal.style.display = "none";
+        }
+    }
+
 });

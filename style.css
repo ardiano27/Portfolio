@@ -679,3 +679,114 @@ input:checked + .slider:before { transform: translateX(26px); }
         font-size: 2.5rem;
     }
 }
+
+/* --- SNEAK PEEK SECTION (Infinite Scroll) --- */
+.sneak-peek-section {
+    padding: 80px 0;
+    overflow: hidden; /* Sembunyikan scrollbar horizontal */
+    background-color: var(--bg-color);
+}
+
+.sneak-peek-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+/* Track panjang yang bergerak */
+.marquee-track {
+    display: flex;
+    gap: 20px; /* Jarak antar gambar */
+    width: max-content;
+    animation: scroll 20s linear infinite; /* Kecepatan scroll */
+}
+
+/* Animasi Loop */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Geser setengah panjang track */
+}
+
+/* Pause saat di-hover user */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* Styling Gambar Sneak Peek */
+.peek-img {
+    height: 250px; /* Tinggi seragam */
+    width: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.peek-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- IMAGE VIEWER MODAL (Lightbox) --- */
+.image-viewer-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* Di atas segalanya */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(13, 27, 66, 0.95); /* Dark Blue overlay */
+    backdrop-filter: blur(5px);
+}
+
+.viewer-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    animation: zoomIn 0.3s;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+@keyframes zoomIn {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+.close-viewer {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-viewer:hover,
+.close-viewer:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .peek-img { height: 180px; }
+    .viewer-content { width: 95%; }
+}
