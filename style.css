@@ -790,3 +790,87 @@ input:checked + .slider:before { transform: translateX(26px); }
     .peek-img { height: 180px; }
     .viewer-content { width: 95%; }
 }
+.table-section {
+    background-color: var(--text-primary); /* Navy Blue Background */
+    color: var(--bg-color); /* Cream Text */
+    padding: 100px 8%;
+    position: relative;
+}
+
+.table-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table-header {
+    margin-bottom: 80px;
+}
+
+/* Styling Logo */
+.table-logo {
+    width: 60px; /* Ukuran logo, sesuaikan jika perlu */
+    height: auto;
+    margin-bottom: 20px;
+    /* Filter ini membuat logo jadi Putih/Cream agar terlihat di background gelap */
+    /* Hapus baris filter jika logomu sudah berwarna putih */
+    filter: brightness(0) invert(1) sepia(0.2) saturate(0.5) hue-rotate(10deg);
+}
+
+.section-title-light {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--bg-color); /* Warna Cream */
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+/* Grid Layout */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
+    gap: 40px;
+    border-top: 1px solid rgba(253, 252, 248, 0.2); /* Garis tipis transparan */
+    padding-top: 60px;
+}
+
+.value-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.value-num {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--accent-color); /* Warna Orange */
+    margin-bottom: 10px;
+    display: block;
+}
+
+.value-card h3 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff; /* Putih murni untuk heading */
+    margin-bottom: 5px;
+}
+
+.value-card p {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7); /* Putih agak transparan */
+    line-height: 1.7;
+}
+
+/* Responsif Tablet/HP */
+@media (max-width: 900px) {
+    .values-grid {
+        grid-template-columns: 1fr; /* Jadi 1 kolom ke bawah */
+        gap: 60px;
+    }
+    
+    .section-title-light {
+        font-size: 2.5rem;
+    }
+}
