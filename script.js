@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // --- 2. Time & Location Logic (UPDATED: AM/PM) ---
+    // --- 2. Time & Location Logic  ---
     function updateTime() {
         const timeDisplay = document.getElementById('liveTime');
         const now = new Date();
@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. Works Section Data & New Modal Layout ---
     
-    // UPDATED DATA STRUCTURE (Added 'role' and 'certificate')
     const projectsData = [
         {
             id: 1,
