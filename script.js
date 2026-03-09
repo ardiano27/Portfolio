@@ -186,4 +186,105 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ANIMATION ENGINE — Scroll Reveal, Parallax, Progress Bar
+    // --- Scroll Progress Bar ---
+    const progressBar = document.getElementById('scroll-progress');
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+
+    // --- Sticky Nav ---
+    const navEl = document.querySelector('nav');
+    function updateNav() {
+        navEl.classList.toggle('scrolled', window.scrollY > 60);
+    }
+
+    // --- Scroll Reveal with IntersectionObserver ---
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // --- Stagger groups: [data-stagger] children ---
+    const staggerGroups = document.querySelectorAll('[data-stagger]');
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                Array.from(entry.target.children).forEach(child => {
+                    child.classList.add('is-visible');
+                });
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    staggerGroups.forEach(group => staggerObserver.observe(group));
+
+    // --- Smooth Scroll for nav links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            const offset = navEl.classList.contains('scrolled') ? navEl.offsetHeight : 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    // --- Parallax on Hero elements ---
+    const heroImgContainer = document.querySelector('.hero-image-container');
+    const blurBgEl = document.querySelector('.blur-bg');
+    const floatingEls = document.querySelectorAll('.floating-elements');
+
+    function applyParallax() {
+        const scrollY = window.scrollY;
+        if (scrollY < window.innerHeight * 1.5) {
+            if (heroImgContainer) heroImgContainer.style.transform = `translateY(${scrollY * 0.12}px)`;
+            if (blurBgEl) blurBgEl.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.07}px))`;
+            floatingEls.forEach(el => {
+                el.style.transform = `translateY(${scrollY * 0.18}px)`;
+            });
+        }
+    }
+
+    // --- Sneak peek scale on scroll enter ---
+    const peekSection = document.querySelector('.sneak-peek-section');
+    function applyPeekScale() {
+        if (!peekSection) return;
+        const rect = peekSection.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        if (rect.top < viewH && rect.bottom > 0) {
+            const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH + rect.height)));
+            peekSection.style.transform = `scale(${0.96 + progress * 0.04})`;
+        }
+    }
+
+    // --- Unified rAF scroll handler ---
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateScrollProgress();
+                updateNav();
+                applyParallax();
+                applyPeekScale();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Initial call
+    updateNav();
+    updateScrollProgress();
+
 });
