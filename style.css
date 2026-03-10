@@ -874,3 +874,178 @@ input:checked + .slider:before { transform: translateX(26px); }
         font-size: 2.5rem;
     }
 }
+
+/* ============================================
+   SCROLL REVEAL & ANIMATION SYSTEM
+   ============================================ */
+
+/* Base hidden state before reveal */
+[data-reveal] {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-duration: 0.75s;
+    will-change: opacity, transform;
+}
+
+[data-reveal="fade-up"]   { transform: translateY(40px); }
+[data-reveal="fade-in"]   { transform: translateY(0px); }
+[data-reveal="fade-left"] { transform: translateX(-40px); }
+[data-reveal="fade-right"]{ transform: translateX(40px); }
+[data-reveal="zoom-in"]   { transform: scale(0.92); }
+[data-reveal="slide-up"]  { transform: translateY(65px); }
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Stagger system for sequential children */
+[data-stagger] > * {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+[data-stagger] > *.is-visible { opacity: 1; transform: none; }
+[data-stagger] > *:nth-child(1) { transition-delay: 0s; }
+[data-stagger] > *:nth-child(2) { transition-delay: 0.13s; }
+[data-stagger] > *:nth-child(3) { transition-delay: 0.26s; }
+[data-stagger] > *:nth-child(4) { transition-delay: 0.39s; }
+
+/* ============================================
+   HERO PAGE-LOAD ENTRANCE ANIMATIONS
+   ============================================ */
+nav {
+    animation: navDrop 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.hero-content h1 {
+    animation: heroSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 0.1s;
+}
+.dynamic-text-container {
+    animation: heroSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 0.25s;
+}
+.persona-toggle-container {
+    animation: heroSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 0.4s;
+}
+.hero-image-container {
+    animation: heroFadeIn 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 0.3s;
+}
+
+@keyframes navDrop {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateX(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+#scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color), #ff8a65);
+    z-index: 9999;
+    border-radius: 0 2px 2px 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   STICKY NAV ON SCROLL
+   ============================================ */
+nav {
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+}
+nav.scrolled {
+    position: fixed;
+    background: rgba(253, 252, 248, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    padding: 16px 8%;
+}
+
+/* ============================================
+   ENHANCED HOVER INTERACTIONS
+   ============================================ */
+.work-card {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+.work-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.value-card {
+    transition: transform 0.35s ease;
+    cursor: default;
+}
+.value-card:hover { transform: translateY(-6px); }
+.value-num { transition: transform 0.3s ease; display: block; }
+.value-card:hover .value-num { transform: scale(1.15); }
+
+.visual-floater {
+    position: absolute;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    animation: floatVisuals 8s ease-in-out infinite;
+    cursor: pointer;
+    /* TAMBAHAN: Transisi halus saat di-hover */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+.visual-floater:hover {
+    transform: translateY(-12px) scale(1.04) !important;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.18) !important;
+    z-index: 10;
+    
+    /* TAMBAHAN: Pause animasi melayang saat kursor di atasnya biar gak bentrok */
+    animation-play-state: paused;
+}
+
+.social-item {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background 0.3s ease, box-shadow 0.3s ease;
+}
+.social-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.work-thumbnail img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.3s ease;
+}
+.work-card:hover .work-thumbnail img {
+    transform: scale(1.08);
+    filter: brightness(1.04);
+}
+
+/* ============================================
+   REDUCE MOTION (Accessibility)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal], [data-stagger] > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    nav, .hero-content h1, .dynamic-text-container,
+    .persona-toggle-container, .hero-image-container {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    #scroll-progress { display: none; }
+}
