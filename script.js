@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Target Container Text
     const dynamicTextContainer = document.getElementById('dynamicDescription');
 
-    const developerImage = 'assets/images/develop.png';
-    const designerImage = 'assets/images/graphic.png';
+    const developerImage = 'assets/images/develop.webp';
+    const designerImage = 'assets/images/graphic.webp';
 
     // Text Content sesuai request
     const devText = `<p class="subtitle">I'm <span class="highlight">Full Stack Developer</span>, crafting robust digital solutions with clean code and logical thinking.</p>`;
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
             role: "Full Stack Developer", // Role Pill text
             category: "Web Development",
             description: "A comprehensive expense tracking platform built for startups to manage tight budgets. Features real-time dashboards, multi-user roles, and automated reporting capabilities. I was responsible for the entire backend architecture and frontend integration.",
-            imageFull: "assets/works/winner.png", 
-            certificate: "assets/sertificates/sertif.png", // Path sertifikat kamu
+            imageFull: "assets/works/winner.webp", 
+            certificate: "assets/sertificates/sertif.webp", // Path sertifikat kamu
             githubLink: "https://github.com/ardiano27/Monitoring-TrashScan"
         },
         {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             role: "Full Stack Developer", // Role Pill text
             category: "Frontend Tooling",
             description: "An intuitive drag-and-drop website builder designed for non-technical founders. My focus was on creating high-converting landing page components and ensuring accessibility compliance (WCAG 2.1).",
-            imageFull: "assets/works/konekin2.png",
+            imageFull: "assets/works/konekin2.webp",
             certificate: null, // Kalau tidak ada sertifikat, set null
             githubLink: "https://github.com/ardiano27/Website-Konekin"
         }
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const certHTML = project.certificate ? `
                     <div class="certificate-wrapper">
                         <h4>Contribution Certificate</h4>
-                        <img src="${project.certificate}" class="certificate-img" alt="Certificate for ${project.title}">
+                        <img src="${project.certificate}" class="certificate-img" alt="Certificate for ${project.title}" decoding="async">
                     </div>
                 ` : '';
 
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <div class="project-gallery" style="${!project.certificate ? 'grid-template-columns: 1fr;' : ''}">
                             <div class="project-main-view">
-                                <img src="${project.imageFull}" class="main-project-img" alt="${project.title} Screenshot">
+                                <img src="${project.imageFull}" class="main-project-img" alt="${project.title} Screenshot" decoding="async">
                             </div>
                             ${certHTML}
                         </div>

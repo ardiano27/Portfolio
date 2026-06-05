@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "node tools/minify_static.mjs",
+    "optimize:images": "python tools/optimize_assets.py",
+    "optimize": "npm run optimize:images && npm run build"
+  }
+}

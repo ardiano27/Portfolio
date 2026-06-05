@@ -194,7 +194,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     transform: translate(-50%, -50%);
     width: 450px;
     height: 600px;
-    background-image: url('assets/images/hero-dev.jpg'); /* Default background */
+    background-image: url('assets/images/develop.webp'); /* Default background */
     background-size: cover;
     background-position: center;
     filter: blur(30px);
@@ -1048,4 +1048,140 @@ nav.scrolled {
         transform: none !important;
     }
     #scroll-progress { display: none; }
+}
+/* Pastikan font ngikutin font utama website-mu */
+.behind-canvas {
+    padding: 100px 5%; /* Kasih ruang di kiri kanan */
+    font-family: 'Inter', sans-serif; /* Ganti sesuai font web kamu */
+    background-color: #fcfcfc; /* Warna background tipis biar beda dari section lain */
+}
+
+.container-canvas {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Jarak antara teks dan gambar */
+    justify-content: space-between;
+}
+
+/* --- KIRI: Styling Teks --- */
+.about-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: #111;
+}
+
+.about-text .subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.bio-content p {
+    margin-bottom: 18px;
+    line-height: 1.8;
+    color: #444;
+    font-size: 1rem;
+}
+
+/* --- KANAN: Styling Foto & Hover --- */
+.about-images {
+    flex: 1;
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end; /* Dorong gambar ke kanan */
+    align-items: center;
+}
+
+.image-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    cursor: pointer;
+    width: 240px;
+    height: 320px; /* Bikin tinggi gambar konsisten */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.offset-image {
+    transform: translateY(40px); /* Efek gambar kedua agak turun */
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Biar gambar gak gepeng */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Overlay Hitam Transparan */
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.7); /* Gelap estetik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hover-overlay span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek bounce halus */
+}
+
+/* Interaksi Hover */
+.image-card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.image-card:hover img {
+    transform: scale(1.05); /* Gambar nge-zoom dikit */
+}
+
+.image-card:hover .hover-overlay {
+    opacity: 1;
+}
+
+.image-card:hover .hover-overlay span {
+    transform: translateY(0);
+}
+
+/* Responsif untuk HP */
+@media screen and (max-width: 992px) {
+    .about-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .about-text, .about-images {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+    }
+    .offset-image {
+        transform: translateY(0);
+    }
 }

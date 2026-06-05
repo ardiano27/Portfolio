@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revi Ardiano - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="assets/images/develop.webp" type="image/webp" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="icon" type="image/webp" href="assets/logo/logo.webp">
 </head>
 <body>
 <div id="scroll-progress"></div>
@@ -43,19 +47,19 @@
             <div class="blur-bg"></div>
             
             <div class="main-image-wrapper">
-                <img src="assets/images/formal.png" alt="Profile Photo" id="mainHeroImage" class="active-persona-img">
+                <img src="assets/images/develop.webp" alt="Profile Photo" id="mainHeroImage" class="active-persona-img" width="1536" height="2048" decoding="async" fetchpriority="high">
             </div>
 
             <div class="floating-elements dev-tools active">
-                <img src="assets/tools/vscode.png" alt="VS Code" class="floater t1">
-                <img src="assets/tools/react.png" alt="React" class="floater t2">
-                <img src="assets/tools/nodejs.png" alt="NodeJS" class="floater t3">
+                <img src="assets/tools/vscode.webp" alt="VS Code" class="floater t1" width="500" height="500" decoding="async">
+                <img src="assets/tools/react.webp" alt="React" class="floater t2" width="500" height="500" decoding="async">
+                <img src="assets/tools/nodejs.webp" alt="NodeJS" class="floater t3" width="500" height="500" decoding="async">
                 </div>
 
             <div class="floating-elements design-tools">
-                 <img src="assets/tools/canva.png" alt="Canva" class="floater t1">
-                <img src="assets/tools/figma.png" alt="Figma" class="floater t2">
-                <img src="assets/tools/pinterest.png" alt="Pinterest" class="floater t3">
+                 <img src="assets/tools/canva.webp" alt="Canva" class="floater t1" width="500" height="500" decoding="async">
+                <img src="assets/tools/figma.webp" alt="Figma" class="floater t2" width="512" height="512" decoding="async">
+                <img src="assets/tools/pinterest.webp" alt="Pinterest" class="floater t3" width="547" height="456" decoding="async">
                 
             </div>
         </div>
@@ -69,16 +73,16 @@
         </div>
        
         <div class="floating-visuals-container" data-stagger>
-            <img src="assets/design/konekin.png" alt="Design Work 1" class="visual-floater v1">
-            <img src="assets/design/girl.png" alt="Design Work 2" class="visual-floater v2">
-            <img src="assets/design/rep.png" alt="Design Work 3" class="visual-floater v3">
+            <img src="assets/design/konekin.webp" alt="Design Work 1" class="visual-floater v1" width="2482" height="3508" loading="lazy" decoding="async">
+            <img src="assets/design/girl.webp" alt="Design Work 2" class="visual-floater v2" width="1080" height="1350" loading="lazy" decoding="async">
+            <img src="assets/design/rep.webp" alt="Design Work 3" class="visual-floater v3" width="1920" height="1080" loading="lazy" decoding="async">
             </div>
     </section>
 
     <section class="table-section">
         <div class="table-container">
             <div class="table-header text-center" data-reveal="fade-up">
-                <img src="assets/logo/logo.png" alt="My Logo" class="table-logo">
+                <img src="assets/logo/logo.webp" alt="My Logo" class="table-logo" width="2000" height="2000" loading="lazy" decoding="async">
                 <h2 class="section-title-light">What I bring to the table?</h2>
             </div>
 
@@ -113,7 +117,7 @@
         <div class="works-grid" data-stagger>
             <div class="work-card" data-id="1">
                 <div class="work-thumbnail">
-                    <img src="assets/works/knu.jpeg" alt="Project 1 Thumbnail">
+                    <img src="assets/works/knu.webp" alt="Project 1 Thumbnail" width="900" height="1600" loading="lazy" decoding="async">
                 </div>
                 <div class="work-info">
                     <h3>Smart Trash-Bean </h3>
@@ -124,7 +128,7 @@
 
             <div class="work-card" data-id="2">
                 <div class="work-thumbnail">
-                    <img src="assets/works/konekin.png" alt="Project 2 Thumbnail">
+                    <img src="assets/works/konekin.webp" alt="Project 2 Thumbnail" width="2500" height="1500" loading="lazy" decoding="async">
                 </div>
                 <div class="work-info">
                     <h3>Website Konekin</h3>
@@ -152,17 +156,17 @@
 
         <div class="marquee-container" data-reveal="zoom-in">
             <div class="marquee-track">
-                <img src="assets/design/konekin.png" class="peek-img" alt="Design Work 1">
-                <img src="assets/design/girl.png" class="peek-img" alt="Design Work 2">
-                <img src="assets/design/rep.png" class="peek-img" alt="Design Work 3">
-                <img src="assets/design/sertijab.png" class="peek-img" alt="Design Work 4">
-                <img src="assets/images/develop.png" class="peek-img" alt="Design Work 5">
+                <img src="assets/design/konekin.webp" class="peek-img" alt="Design Work 1" width="2482" height="3508" loading="lazy" decoding="async">
+                <img src="assets/design/girl.webp" class="peek-img" alt="Design Work 2" width="1080" height="1350" loading="lazy" decoding="async">
+                <img src="assets/design/rep.webp" class="peek-img" alt="Design Work 3" width="1920" height="1080" loading="lazy" decoding="async">
+                <img src="assets/design/sertijab.webp" class="peek-img" alt="Design Work 4" width="2500" height="1500" loading="lazy" decoding="async">
+                <img src="assets/images/develop.webp" class="peek-img" alt="Design Work 5" width="1536" height="2048" loading="lazy" decoding="async">
                 
-                <img src="assets/images/graphic.jpg" class="peek-img" alt="Design Work 1">
-                <img src="assets/works/knu.jpeg" class="peek-img" alt="Design Work 2">
-                <img src="assets/images/graphic.jpg" class="peek-img" alt="Design Work 3">
-                <img src="assets/works/knu.jpg" class="peek-img" alt="Design Work 4">
-                <img src="assets/images/graphic.png" class="peek-img" alt="Design Work 5">
+                <img src="assets/images/graphic.webp" class="peek-img" alt="Design Work 1" width="1536" height="2048" loading="lazy" decoding="async">
+                <img src="assets/works/knu.webp" class="peek-img" alt="Design Work 2" width="900" height="1600" loading="lazy" decoding="async">
+                <img src="assets/images/graphic.webp" class="peek-img" alt="Design Work 3" width="1536" height="2048" loading="lazy" decoding="async">
+                <img src="assets/works/knu.webp" class="peek-img" alt="Design Work 4" width="900" height="1600" loading="lazy" decoding="async">
+                <img src="assets/images/graphic.webp" class="peek-img" alt="Design Work 5" width="1536" height="2048" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -172,7 +176,41 @@
         <img class="viewer-content" id="img01">
         <div id="caption"></div>
     </div>
+<section class="behind-canvas" id="about">
+    <div class="container-canvas">
+        <div class="about-wrapper">
+            
+            <div class="about-text">
+                <h2>Behind The Canvas</h2>
+                <h3 class="subtitle">Finally, meet the mind behind the screen — someone who enjoys building things that actually work.</h3>
+                
+                <div class="bio-content">
+                    <p>Hi! My name is Revi Ardiano, a Full Stack Developer and designer who loves turning ideas into digital experiences. I enjoy combining logic and aesthetics — writing code that functions well and designing interfaces that feel right.</p>
+                    <p>I believe good products are built where technology and creativity meet. Whether it's developing a web application, crafting a UI, or solving technical problems, I focus on creating solutions that are simple, efficient, and meaningful.</p>
+                    <p>When I'm not designing or coding, you'll probably find me searching for the perfect combination of coffee and milk in a small café somewhere. For me, great ideas often come between sips of good coffee and quiet moments of thinking.</p>
+                    <p>I enjoy experimenting, learning new technologies, and building things that people can actually use. No unnecessary complexity — just thoughtful design, clean code, and ideas that grow into real products.</p>
+                </div>
+            </div>
 
+            <div class="about-images">
+                <div class="image-card">
+                    <img src="assets/images/kakak(2).webp" alt="Revi Ardiano" width="720" height="1280" loading="lazy" decoding="async"> 
+                    <div class="hover-overlay">
+                        <span>Hi, it's me</span>
+                    </div>
+                </div>
+
+                <div class="image-card offset-image">
+                    <img src="assets/images/catsideeye.webp" alt="Cat Person" width="524" height="739" loading="lazy" decoding="async"> 
+                    <div class="hover-overlay">
+                        <span>cat person</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     <footer id="contact">
         <div class="footer-content text-center" data-reveal="fade-up">
             <h2>Let's Create Together</h2>
@@ -204,6 +242,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+
+    
+    <script src="script.min.js" defer></script>
 </body>
 </html>
