@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Text Content sesuai request
     const devText = `<p class="subtitle">I'm <span class="highlight">Full Stack Developer</span>, crafting robust digital solutions with clean code and logical thinking.</p>`;
-    const desText = `<p class="subtitle">I'm <span class="highlight">Graphic Designer</span>, blending colors and shapes to tell compelling visual stories.</p>`;
+    const desText = `<p class="subtitle">I'm <span class="highlight">Data Analyst</span>, turning raw data into clear insights and decision-ready stories.</p>`;
 
     // Set state awal
     let isDeveloper = true;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     personaToggle.addEventListener('change', function() {
         if (this.checked) {
-            // Switch to Designer
+            // Switch to Analyst
             isDeveloper = false;
             changePersona(designerImage, devTools, designTools, desText);
         } else {
@@ -83,27 +83,44 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Smart Trash-Bean",
             role: "Full Stack Developer", // Role Pill text
             category: "Web Development",
-            description: "A comprehensive expense tracking platform built for startups to manage tight budgets. Features real-time dashboards, multi-user roles, and automated reporting capabilities. I was responsible for the entire backend architecture and frontend integration.",
+            description: "Website for monitoring smart trash bins with IoT sensors, designed to help track organic and inorganic waste conditions through a clean real-time interface.",
             imageFull: "assets/works/winner.webp", 
             certificate: "assets/sertificates/sertif.webp", // Path sertifikat kamu
-            githubLink: "https://github.com/ardiano27/Monitoring-TrashScan"
+            githubLink: "https://github.com/ardiano27/Monitoring-TrashScan",
+            modalTheme: "modal-theme-green"
         },
         {
             id: 2,
             title: "Konekin Website",
             role: "Full Stack Developer", // Role Pill text
             category: "Frontend Tooling",
-            description: "An intuitive drag-and-drop website builder designed for non-technical founders. My focus was on creating high-converting landing page components and ensuring accessibility compliance (WCAG 2.1).",
+            description: "A professional platform that connects creative workers and UMKM, built with a focused interface for showcasing services, profiles, and collaboration opportunities.",
             imageFull: "assets/works/konekin2.webp",
             certificate: null, // Kalau tidak ada sertifikat, set null
-            githubLink: "https://github.com/ardiano27/Website-Konekin"
+            githubLink: "https://github.com/ardiano27/Website-Konekin",
+            modalTheme: "modal-theme-blue"
+        },
+        {
+            id: 3,
+            title: "PlantMoji Smart Farm",
+            role: "AI, IoT & Gamification",
+            category: "Smart Farming",
+            description: "Turning smart farming into an interactive learning experience through AI, IoT, and gamification.",
+            imageFull: "assets/images/PlantMoji.png",
+            certificate: "assets/sertificates/1stPlace-images-0.jpg",
+            githubLink: null,
+            projectLink: "https://number-one-web.vercel.app/",
+            modalTheme: "modal-theme-orange"
         }
     ];
 
-    const workCards = document.querySelectorAll('.work-card');
+    const workCards = document.querySelectorAll('.work-card[data-id]');
     const modal = document.getElementById('projectModal');
+    const modalContent = document.querySelector('.modal-content');
     const modalBody = document.getElementById('modalBodyContent');
     const closeModal = document.querySelector('.close-modal');
+    const modalThemeClasses = ['modal-theme-green', 'modal-theme-blue', 'modal-theme-orange'];
+    let modalClearTimer;
 
     workCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -111,11 +128,37 @@ document.addEventListener('DOMContentLoaded', () => {
             const project = projectsData.find(p => p.id === projectId);
 
             if (project) {
+                if (modalClearTimer) {
+                    clearTimeout(modalClearTimer);
+                    modalClearTimer = null;
+                }
+                modalContent.classList.remove(...modalThemeClasses);
+                modalContent.classList.add(project.modalTheme);
+
                 // Logic cek sertifikat: Tampilkan section sertifikat HANYA jika datanya ada
                 const certHTML = project.certificate ? `
                     <div class="certificate-wrapper">
                         <h4>Contribution Certificate</h4>
                         <img src="${project.certificate}" class="certificate-img" alt="Certificate for ${project.title}" decoding="async">
+                    </div>
+                ` : '';
+
+                const githubHTML = project.githubLink ? `
+                    <a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" class="btn-github">
+                        <i class="fa-brands fa-github"></i> View Code on GitHub
+                    </a>
+                ` : '';
+
+                const projectLinkHTML = project.projectLink ? `
+                    <a href="${project.projectLink}" target="_blank" rel="noopener noreferrer" class="btn-github btn-project-link">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Documentation
+                    </a>
+                ` : '';
+
+                const actionsHTML = githubHTML || projectLinkHTML ? `
+                    <div class="project-actions">
+                        ${githubHTML}
+                        ${projectLinkHTML}
                     </div>
                 ` : '';
 
@@ -134,11 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${certHTML}
                         </div>
 
-                        <div class="text-center">
-                            <a href="${project.githubLink}" target="_blank" class="btn-github">
-                                <i class="fa-brands fa-github"></i> View Code on GitHub
-                            </a>
-                        </div>
+                        ${actionsHTML}
                     </div>
                 `;
                 
@@ -151,7 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeProjectModal() {
         modal.classList.remove('show');
         document.body.style.overflow = 'auto';
-        setTimeout(() => { modalBody.innerHTML = ''; }, 300);
+        if (modalClearTimer) clearTimeout(modalClearTimer);
+        modalClearTimer = setTimeout(() => {
+            modalBody.innerHTML = '';
+            modalContent.classList.remove(...modalThemeClasses);
+            modalClearTimer = null;
+        }, 300);
     }
 
     closeModal.addEventListener('click', closeProjectModal);
