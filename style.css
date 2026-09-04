@@ -263,11 +263,16 @@ input:checked + .slider:before { transform: translateX(26px); }
 .visual-section {
     padding: var(--section-padding);
     position: relative;
-    min-height: 80vh;
+    min-height: auto;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.visual-section .section-header {
+    position: relative;
+    z-index: 2;
 }
 
 .section-header h2 {
@@ -283,25 +288,33 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 .floating-visuals-container {
     position: relative;
-    width: 100%;
-    height: 500px;
-    margin-top: 50px;
+    width: min(100%, 1120px);
+    margin: 64px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 72px);
+    padding: 8px 0 24px;
 }
 
 .visual-floater {
-    position: absolute;
-    border-radius: 15px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    position: relative;
+    display: block;
+    height: auto;
+    max-height: 460px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 18px 45px rgba(13, 27, 66, 0.12);
     animation: floatVisuals 8s ease-in-out infinite;
 }
 
-.visual-floater.v1 { top: 10%; left: 10%; width: 300px; animation-delay: 0s; z-index: 2;}
-.visual-floater.v2 { top: 40%; right: 10%; width: 250px; animation-delay: 3s; z-index: 1;}
-.visual-floater.v3 { bottom: 10%; left: 40%; width: 280px; animation-delay: 5s; z-index: 3;}
+.visual-floater.v1 { width: clamp(220px, 24vw, 330px); margin-top: 48px; animation-delay: 0s; z-index: 2;}
+.visual-floater.v2 { width: clamp(200px, 21vw, 285px); margin-bottom: 46px; animation-delay: 3s; z-index: 3;}
+.visual-floater.v3 { width: clamp(240px, 28vw, 360px); margin-top: 94px; animation-delay: 5s; z-index: 1;}
 
 @keyframes floatVisuals {
     0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-30px) scale(1.02); }
+    50% { transform: translateY(-14px) scale(1.015); }
     100% { transform: translateY(0px) scale(1); }
 }
 
@@ -507,6 +520,19 @@ input:checked + .slider:before { transform: translateX(26px); }
     .main-image-wrapper { width: 350px; height: 450px; }
     .blur-bg { width: 380px; height: 480px; }
     .floater { width: 50px; } /* Perkecil icon di tablet */
+    .floating-visuals-container {
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 48px;
+    }
+    .visual-floater.v1,
+    .visual-floater.v2,
+    .visual-floater.v3 {
+        margin: 0;
+    }
+    .visual-floater.v3 {
+        width: min(100%, 520px);
+    }
 }
 
 @media (max-width: 768px) {
@@ -517,7 +543,26 @@ input:checked + .slider:before { transform: translateX(26px); }
     
     /* Sembunyikan beberapa elemen melayang di mobile agar tidak penuh */
     .floater.t2, .floater.t3 { display: none; } 
-    .visual-floater { width: 150px !important; }
+    .visual-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .floating-visuals-container {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 360px);
+        gap: 22px;
+        margin-top: 36px;
+        padding-bottom: 0;
+    }
+    .visual-floater,
+    .visual-floater.v1,
+    .visual-floater.v2,
+    .visual-floater.v3 {
+        width: 100% !important;
+        max-height: 420px;
+        margin: 0;
+    }
     
     .works-grid { grid-template-columns: 1fr; }
     .modal-content { width: 95%; padding: 25px; }
@@ -998,9 +1043,9 @@ nav.scrolled {
 .value-card:hover .value-num { transform: scale(1.15); }
 
 .visual-floater {
-    position: absolute;
-    border-radius: 15px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 18px 45px rgba(13, 27, 66, 0.12);
     animation: floatVisuals 8s ease-in-out infinite;
     cursor: pointer;
     /* TAMBAHAN: Transisi halus saat di-hover */
