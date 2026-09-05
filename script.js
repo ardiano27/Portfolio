@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicTextContainer = document.getElementById('dynamicDescription');
 
     const developerImage = 'assets/images/develop.webp';
-    const designerImage = 'assets/images/graphic.webp';
+    const designerImage = 'assets/images/data-analyst.png';
 
     // Text Content sesuai request
     const devText = `<p class="subtitle">I'm <span class="highlight">Full Stack Developer</span>, crafting robust digital solutions with clean code and logical thinking.</p>`;
@@ -107,7 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Smart Farming",
             description: "Turning smart farming into an interactive learning experience through AI, IoT, and gamification.",
             imageFull: "assets/images/PlantMoji.png",
-            certificate: "assets/sertificates/1stPlace-images-0.jpg",
+            certificate: [
+                "assets/sertificates/Revi Ardiano Ramadhan.png",
+                "assets/sertificates/1stPlace-images-1.jpg"
+            ],
             githubLink: null,
             projectLink: "https://number-one-web.vercel.app/",
             modalTheme: "modal-theme-orange"
@@ -136,10 +139,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalContent.classList.add(project.modalTheme);
 
                 // Logic cek sertifikat: Tampilkan section sertifikat HANYA jika datanya ada
-                const certHTML = project.certificate ? `
+                const certificates = Array.isArray(project.certificate)
+                    ? project.certificate
+                    : project.certificate
+                        ? [project.certificate]
+                        : [];
+
+                const certHTML = certificates.length ? `
                     <div class="certificate-wrapper">
-                        <h4>Contribution Certificate</h4>
-                        <img src="${project.certificate}" class="certificate-img" alt="Certificate for ${project.title}" decoding="async">
+                        <h4>${certificates.length > 1 ? 'Contribution Certificates' : 'Contribution Certificate'}</h4>
+                        <div class="certificate-list">
+                            ${certificates.map((certificate, index) => `
+                                <img src="${certificate}" class="certificate-img" alt="Certificate ${index + 1} for ${project.title}" loading="lazy" decoding="async">
+                            `).join('')}
+                        </div>
                     </div>
                 ` : '';
 
@@ -170,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <p class="modal-description-text">${project.description}</p>
 
-                        <div class="project-gallery" style="${!project.certificate ? 'grid-template-columns: 1fr;' : ''}">
+                        <div class="project-gallery" style="${!certificates.length ? 'grid-template-columns: 1fr;' : ''}">
                             <div class="project-main-view">
                                 <img src="${project.imageFull}" class="main-project-img" alt="${project.title} Screenshot" decoding="async">
                             </div>
